@@ -1,1 +1,1 @@
-# Date-Counter-App
+# Date Counter App
