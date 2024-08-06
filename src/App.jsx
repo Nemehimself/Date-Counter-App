@@ -7,6 +7,10 @@ function App() {
   const [count, setCount] = useState(0);
   const [step, setStep] = useState(1);
 
+  function handleReset() {
+    setCount(0);
+    setStep(1);
+  }
   const date = new Date();
   date.setDate(date.getDate() + count);
 
@@ -21,6 +25,15 @@ function App() {
         </a>
       </div>
       <h1>Vite + React</h1>
+      <span>
+        <input
+          type="range"
+          min="1"
+          max="10"
+          value={step}
+          onChange={(e) => setStep(Number(e.target.value))}
+        />
+      </span>
       <div className="card">
         <button onClick={() => setStep((count) => count - 1)}> - </button>
         <span>step : {step}</span>
@@ -31,6 +44,18 @@ function App() {
         <span>Count : {count}</span>
         <button onClick={() => setCount((count) => count + step)}> + </button>
       </div>
+      <span>
+        <input
+          type="text"
+          value={count}
+          onChange={(e) => setCount(Number(e.target.value))}
+        />
+      </span>
+      {count !== 0 || step !== 1 ? (
+        <div>
+          <button onClick={handleReset}>Reset</button>
+        </div>
+      ) : null}
       <div className="card">
         <span>
           {count === 0
